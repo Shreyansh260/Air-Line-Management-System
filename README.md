@@ -1,4 +1,4 @@
-# Air-Line-Management-System
+# ✈️ Air-Line-Management-System
 This Kivy-based Airline Passenger Management App lets users add passengers, view available seats, and check all registered passengers. It assigns random seats and flight times while fetching real-time weather for destinations via the Open-Meteo API. The app uses SQLite for data storage and Kivy's ScreenManager for smooth navigation.
 
 from kivy.app import App
@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 import requests
 
 
-# Initialize SQLite Database
+# 📃 Initialize SQLite Database
 def initialize_database():
     conn = sqlite3.connect("airline_passenger_data.db")
     cursor = conn.cursor()
@@ -32,7 +32,7 @@ def initialize_database():
     return conn
 
 
-# Generate random flight time
+# ⚙️ Generate random flight time
 def generate_random_flight_time():
     now = datetime.now()
     random_days = random.randint(0, 7)
@@ -41,7 +41,7 @@ def generate_random_flight_time():
     return flight_time.strftime("%Y-%m-%d %H:%M:%S")
 
 
-# Fetch weather data for a city
+# 🗺 Fetch weather data for a city
 def get_weather_open_meteo(city):
     try:
         # Get latitude and longitude of the city
@@ -50,12 +50,12 @@ def get_weather_open_meteo(city):
         if not response.get("results"):
             return {"error": "City not found."}
 
-# Extract latitude and longitude
+# 🌍 Extract latitude and longitude
 location = response["results"][0]
 latitude = location["latitude"]
 longitude = location["longitude"]
 
-# Fetch weather data
+# 🌐 Fetch weather data
   weather_url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true"
   weather_response = requests.get(weather_url).json()
 
