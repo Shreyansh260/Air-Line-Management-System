@@ -132,7 +132,7 @@ class AddPassengerScreen(Screen):
         self.name_input.text = ""
         self.destination_spinner.text = "Select Destination"
 
-  # Fetch and display weather information
+  #💈Fetch and display weather information
    weather = get_weather_open_meteo(destination)
         if "error" not in weather:
             self.weather_label.text = f"Weather at {destination}:\nTemperature: {weather['temperature']}°C\n" \
